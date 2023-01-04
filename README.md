@@ -6,7 +6,11 @@ we will be building ResNet. We are building this CNN from scratch in PyTorch, an
 We will start by exploring the architecture of ResNet. We will then load and analyze our dataset,  CIFAR-10 , using the provided class from torchvision. Using PyTorch, we will build our ResNet from scratch and train it on our data. Finally, we will see how the model performs on the unseen test data.
 
 ## ResNet
-VGG focuses on another crucial aspect of Convolutional Neural Networks (CNNs), depth. It was developed by Simonyan and Zisserman. It normally consists of 16 convolutional layers but can be extended to 19 layers as well (hence the two versions, VGG-16 and VGG-19). All the convolutional layers consists of 3x3 filters. You can read more about the network in the official paper.
+One of the drawbacks of VGG was that it couldn't go as deep as wanted because it started to lose the generalization capability (i.e, it started overfitting). This is because as a neural network gets deeper, the gradients from the loss function start to shrink to zero and thus the weights are not updated. This problem is known as the vanishing gradient problem. ResNet essentially solved this problem by using skip connections.
+
+![image](https://user-images.githubusercontent.com/101316217/210558944-ba3913f8-7646-4379-8d55-af9e20898cce.png)
+
+In the figure above, we can see that, in addition to the normal connections, there is a direct connection that skips some layers in the model (skip connection).  With the skip connection, the output changes from h(x) = f(wx +b) to h(x) = f(x) + x. These skip connections help as they allow an alternate shortcut path for the gradients to flow through. Below is the architecture of the 34-layer ResNet.
 
 ![image](https://user-images.githubusercontent.com/101316217/210557257-822effd5-9c5c-4c5a-a331-513d6e02bba8.png)
 
